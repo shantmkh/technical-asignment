@@ -1,7 +1,7 @@
+import { HomeFt } from "features/home/ui/HomeFt"
+
 const Home: React.FC<{}> = () => {
-  return (
-    <div style={{ height: "100vh", backgroundColor: "green" }}>Home</div>
-  )
+  return <HomeFt />
 }
 
 export default Home;
