@@ -21,7 +21,11 @@ export const Header: React.FC<{}> = () => {
     <Main>
       <Wrapper>
         <MobileContainer>
-          <Burger active={isMobileMenuVisible} onClick={() => setIsMobileMenuVisible(!isMobileMenuVisible)}>
+          <Burger
+            active={isMobileMenuVisible}
+            onClick={() => setIsMobileMenuVisible(!isMobileMenuVisible)}
+            aria-label="mobile menu"
+          >
             <div/>
             <div/>
             <div/>

@@ -1,5 +1,6 @@
-import { createStore } from "effector";
-import { getProductsFx } from "features/home/effects/productEffect";
+import { createStore, sample } from "effector";
+import { deleteProductsFx, getProductsFx, updateProductFx } from "features/home/effects/productEffect";
+import { pageSize } from "utils/constants/generic";
 import { IProduct } from "utils/types/mainTypes";
 
 const initialState: {
@@ -12,14 +13,32 @@ const initialState: {
   total: 0
 }
 
-export const $productStore = createStore(initialState);
+export const $productStore = createStore(initialState)
 
-$productStore.on(getProductsFx.doneData, (state, data) => {
+sample({
+  clock: deleteProductsFx.done,
+  source: $productStore,
+  fn: () => {
+    return { params: `?_page=1&limit=${pageSize}` }
+  },
+  target: getProductsFx,
+});
+
+sample({
+  clock: updateProductFx.done,
+  source: $productStore,
+  fn: () => {
+    return { params: `?_page=1&limit=${pageSize}`, prevProducts: [] }
+  },
+  target: getProductsFx,
+});
+
+$productStore.on(getProductsFx.doneData, (state, result) => {
   return {
     ...state,
     error: null,
-    total: data.total,
-    products: data.products
+    total: result.totlaCount,
+    products: result.data
   }
 }).on(getProductsFx.failData, (state) => {
   return {

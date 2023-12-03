@@ -56,8 +56,15 @@ export class BaseApi {
   }
 
   private handleResponse(res: Response) {
-    return res.json().then((res) => new ResponseData(ApiStatuses.SUCCESS, res));
-  } 
+    const totlaCount = res.headers.get("X-Total-Count");
+    return res.json()
+      .then((res) => {
+        return new ResponseData(
+          ApiStatuses.SUCCESS,
+          { data: res, ...(totlaCount && { totlaCount: +totlaCount }) }
+        )
+      });
+  }
 
   private handleError(error: Error) {
     return new ResponseData(ApiStatuses.SUCCESS, null, error.message)

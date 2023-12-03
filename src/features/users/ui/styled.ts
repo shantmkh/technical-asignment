@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 
-export const ViewWrapper = styled.div`
-  min-height: 100vh;
+export const UserContainer = styled.div`
   display: flex;
   flex-direction: column;
-  position: relative;
+  padding-top: 30px;
+  margin: 0 7px;
 `

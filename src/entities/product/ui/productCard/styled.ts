@@ -12,6 +12,7 @@ export const CardContainer = styled.div`
 export const CardImage = styled.img`
   width: 100%;
   height: 60%;
+  aspect-ratio: auto;
 `
 
 export const CardDetails = styled.div`
@@ -48,4 +49,17 @@ export const CardPrice = styled.div`
   font-size: 16px;
   font-weight: 500;
   margin: 10px 0;
+`
+
+export const ProductAction = styled.button<{ action?: string }>`
+  font-weight: 400;
+  text-align: center;
+  border: none;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+  color: ${props => props.action === "delete" ? "#fff" : "#2b2a35"};
+  background-color: ${props => props.action === "delete" ? "#dc3545" : "transparent"};
 `
