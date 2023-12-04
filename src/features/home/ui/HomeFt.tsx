@@ -1,3 +1,4 @@
+import { createPortal } from 'react-dom';
 import { useEffect, useState } from "react"
 import { pageSize } from "utils/constants/generic";
 import { useUnit } from "effector-react";
@@ -55,11 +56,11 @@ export const HomeFt: React.FC<{}> = () => {
         ))}
       </ProductsContainer>
       {selectedProduct && (
-        <EditProduct
+        createPortal(<EditProduct
           product={selectedProduct}
           closeModal={() => setTargetProduct(null)}
           saveData={saveData}
-        />
+        />, document.body)
       )}
       <FlexContainer justifyType="center">
         <Button onClick={getMoreData} variant="black">Load more</Button>
