@@ -58,7 +58,7 @@ export const EditProduct: React.FC<{
         />
         <ModalButtons>
           <Button onClick={closeModal} aria-label="save product">Cancel</Button>
-          <Button onClick={saveProduct} variant="green" aria-label="close modal">Save</Button>
+          <Button onClick={saveProduct} variant="purple" aria-label="close modal">Save</Button>
         </ModalButtons>
       </ModalContent>
     </ModalContainer>

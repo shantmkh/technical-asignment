@@ -26,6 +26,16 @@ const colorPare: ObjectGeneric<{
     background: "#343a40",
     hover: "#23272b",
     color: "#ffffff"
+  },
+  blueLink: {
+    background: "transparent",
+    hover: "#00000014",
+    color: "#007bff"
+  },
+  purple: {
+    background: "#8d49f7",
+    hover: "#843bf6",
+    color: "#fff"
   }
 }
 
@@ -46,10 +56,11 @@ export const PageWrapper = styled.div`
   margin: 0 auto; 
 `
 
-export const FlexContainer = styled.div<{ justifyType?: string; alignItems?: string }>`
+export const FlexContainer = styled.div<{ justifyType?: string; alignItems?: string; flexDirection?: string }>`
   display: flex;
   justify-content: ${props => props.justifyType || 'space-between'};
-  align-items: ${props => props.alignItems || 'center'}
+  align-items: ${props => props.alignItems || 'center'};
+  flex-direction: ${props => props.flexDirection || "row"};
 `
 
 export const Button = styled.button<{ variant?: string }>`
